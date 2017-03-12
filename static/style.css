@@ -55,6 +55,7 @@ a {
 
 .button {
     color: #FFF;
+    border: none;
     display: inline-block;
     border-radius: 8px;
     width: 92px;

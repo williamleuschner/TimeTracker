@@ -54,3 +54,17 @@ def index():
         "index.html",
         subjects=subjects
     )
+
+@app.route("/start-timer", methods=["POST"])
+def start_timer():
+    return "This will do something eventually"
+
+
+@app.route("/stop-timer", methods=["POST"])
+def stop_timer():
+    return "This will do something eventually"
+
+
+@app.route("/log-subject", methods=["POST"])
+def log_subject():
+    return "This will do something eventually"

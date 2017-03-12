@@ -12,31 +12,36 @@
         <div class="timer container">
             <p>WORK TIMER</p>
             <div class="flex-group">
-                <a href="" class="button green">
+                <form class="button-container" action="{{ url_for('start_timer') }}" method="POST">
+                <button class="button green">
                     <img src="{{ url_for('static', filename='images/start.svg') }}"
                     alt="start triangle icon">
                     <p>Start</p>
-                </a>
-                <a href="" class="button red">
+                </button>
+                </form>
+                <form class="button-container" action="{{ url_for('stop_timer') }}" method="POST">
+                <button class="button red">
                     <img src="{{ url_for('static', filename='images/stop.svg') }}"
                     alt="stop square icon">
                     <p>Stop</p>
-                </a>
+                </button>
+                </form>
             </div>
         </div>
         <div class="subject container">
             <p>SUBJECT LOGGERS</p>
             <div class="flex-group">
                 {% for subject in subjects %}
-                <div class="button-container">
-                <a href="{{ subject.link }}" class="button {{ subject.color }}">
+                <form class="button-container" action="{{ url_for('log_subject') }}"
+                    method="GET">
+                <button class="button {{ subject.color }}">
                     <img src="{{ url_for('static', filename='images/' +
                     subject.icon) }}" alt="subject icon">
                     <p>{{ subject.shortname }}</p>
-                </a>
+                </button>
                 <input type="number" name="minutes-worked" value="40">
                 <input type="text" name="subject" value="{{ subject.name }}" hidden>
-                </div>
+                </form>
                 {% endfor %}
             </div>
         </div>
