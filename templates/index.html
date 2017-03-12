@@ -7,7 +7,7 @@
     </head>
     <body>
         <div class="timer container">
-            <p>Work Timer</p>
+            <p>WORK TIMER</p>
             <div class="flex-group">
                 <a href="" class="start button">
                     <img src="{{ url_for('static', filename='images/start.svg') }}"
@@ -22,14 +22,16 @@
             </div>
         </div>
         <div class="subject container">
-            <p>Subject Loggers</p>
+            <p>SUBJECT LOGGERS</p>
             <div class="flex-group">
                 {% for subject in subjects %}
+                <div class="button-container">
                 <a href="{{ subject.link }}" class="button {{ subject.color }}">
                     <img src="{{ url_for('static', filename='images/' +
                     subject.icon) }}" alt="subject icon">
                     <p>{{ subject.shortname }}</p>
                 </a>
+                </div>
                 {% endfor %}
             </div>
         </div>

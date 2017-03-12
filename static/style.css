@@ -2,6 +2,10 @@ body, html {
     font-family: "San Francisco Text", "SF UI Text", "Helvetica Neue", Arial, sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
 .container {
     border-top-width: 1px;
     border-top-style: solid;
@@ -11,14 +15,7 @@ body, html {
     border-bottom-color: #95989A;
     padding: 1rem;
     margin-bottom: 1rem;
-    display: flex;
 }
-
-.flex-group {
-    justify-content: center;
-    align-items: space-around;
-}
-
 
 .container > p {
     font-variant: caps;
@@ -26,16 +23,33 @@ body, html {
     margin: 1rem 1.5rem;
 }
 
+.timer .button {
+    font-size: 20px;
+}
+
+.subject .button {
+    font-size: 15px;
+}
+
+.flex-group {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .button {
     background-color: #34C144;
     color: #FFF;
     margin: 0.5rem;
+    display: inline-block;
+    border-radius: 8px;
+    width: 92px;
+    height: 92px;
 }
 
 .button img {
-    width: 54px;
-    height: 54px;
-    margin: 4px auto;
+    width: 50px;
+    height: 50px;
 }
 
 .button p {
