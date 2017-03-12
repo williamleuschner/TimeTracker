@@ -43,6 +43,15 @@
                 <input type="text" name="subject" value="{{ subject.name }}" hidden>
                 </form>
                 {% endfor %}
+                <form class="button-container" action="{{ url_for('log_subject')
+                }}" method="POST">
+                    <button class="button purple">
+                        <img src="{{ url_for('static',
+                        filename='images/stop.svg') }}" alt="subject icon">
+                        <input type="text" name="subject" value="Other">
+                    </button>
+                    <input type="number" name="minutes-worked" value="40">
+                </form>
             </div>
         </div>
     </body>
