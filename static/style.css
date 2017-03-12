@@ -42,6 +42,7 @@ a {
 
 .button-container {
     max-width: 108px;
+    margin: 0.5rem;
 }
 
 .button-container input {
@@ -54,7 +55,6 @@ a {
 
 .button {
     color: #FFF;
-    margin: 0.5rem;
     display: inline-block;
     border-radius: 8px;
     width: 92px;
