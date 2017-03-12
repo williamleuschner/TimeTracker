@@ -25,14 +25,17 @@ class TimeTracker(object):
             self.start_time = datetime.datetime.now()
             # Write the time to a temp file as a backup
             with open("/tmp/timetracker.tmp", "w") as tmpfile:
-                tmpfile.write(self.start_time)
+                tmpfile.write(self.start_time.isoformat())
             return redirect(url_for("index"))
         else:
             return "You've already started the timer."
 
     def stop_timer(self):
         if self.start_time is not None:
-            times = [self.start_time, datetime.datetime.now()]
+            times = [
+                self.start_time.isoformat(),
+                datetime.datetime.now().isoformat()
+            ]
             csvwriter = csv.writer(self.timer_file)
             csvwriter.writerow(times)
             return redirect(url_for("index"))
