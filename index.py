@@ -53,12 +53,12 @@ def index():
 
 @app.route("/start-timer", methods=["POST"])
 def start_timer():
-    return "This will do something eventually"
+    return app.config.Tracker.start_timer()
 
 
 @app.route("/stop-timer", methods=["POST"])
 def stop_timer():
-    return "This will do something eventually"
+    return app.config.Tracker.stop_timer()
 
 
 @app.route("/log-subject", methods=["POST"])
