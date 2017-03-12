@@ -37,6 +37,14 @@ a {
     align-items: center;
 }
 
+.button-container input {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    border: none;
+    font-size: 15px;
+}
+
 .button {
     background-color: #34C144;
     color: #FFF;
