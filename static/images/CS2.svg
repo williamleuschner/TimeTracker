@@ -15,27 +15,22 @@
 	 viewBox="0 0 54 54" style="enable-background:new 0 0 54 54;" xml:space="preserve">
 <style type="text/css">
 <![CDATA[
-	.st0{font-family:'SauceCodePowerline-Medium';}
-	.st1{fill:#FFFFFF;}
-	.st2{fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:square;stroke-miterlimit:10;}
-	.st3{font-size:32;}
+	.st0{fill:#FFFFFF;}
+	.st1{fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:square;stroke-miterlimit:10;}
 ]]>
 </style>
-<font horiz-adv-x="1000">
-<!-- Copyright 2010, 2012 Adobe Systems Incorporated. All Rights Reserved.
-Copyright (c) 2013, Kim Silkebaekken and Carl X. Su. -->
-<font-face font-family="SauceCodePowerline-Medium" units-per-em="1000" underline-position="-50" underline-thickness="50"/>
-<missing-glyph horiz-adv-x="599" d="M55,0l490,0l0,660l-490,0M129,122l0,438l119,-220M352,340l118,220l0,-438M183,67l65,118l50,101l4,0l49,-101l64,-118M298,394l-48,94l-57,104l213,0l-57,-104l-47,-94z"/>
-<glyph unicode="f" horiz-adv-x="599" d="M580,693C535,711 487,721 437,721C298,721 235,640 235,523l0,-34l-137,-5l0,-75l137,0l0,-409l98,0l0,409l195,0l0,80l-195,0l0,36C333,599 367,642 448,642C489,642 521,636 558,620z"/>
-<glyph unicode="(" horiz-adv-x="599" d="M422,-176l55,47C347,-15 287,113 287,278C287,443 347,571 477,685l-55,47C285,623 201,470 201,278C201,86 285,-67 422,-176z"/>
-<glyph unicode=")" horiz-adv-x="599" d="M178,-176C315,-67 399,86 399,278C399,470 315,623 178,732l-55,-47C253,571 313,443 313,278C313,113 253,-15 123,-129z"/>
-</font>
-
-	<metadata>
+<metadata>
 	<sfw  xmlns="&ns_sfw;">
 		<slices></slices>
-		<sliceSourceBounds  width="234" height="137.211" bottomLeftOrigin="true" x="0" y="-144"></sliceSourceBounds>
+		<sliceSourceBounds  width="234" height="137.2" y="-144" x="0" bottomLeftOrigin="true"></sliceSourceBounds>
 	</sfw>
 </metadata>
-<text transform="matrix(1 0 0 1 -0.332 38.458)" class="st1 st0 st3">f()</text>
+<g>
+	<path class="st0" d="M17.5,18.6c-1.2-0.5-2.2-0.7-3.5-0.7c-2.6,0-3.7,1.4-3.7,3.7v1.2h6.2v2.6h-6.2v13.1H7.2V25.4H2.8V23l4.4-0.2
+		v-1.1c0-3.7,2-6.3,6.5-6.3c1.6,0,3.1,0.3,4.6,0.9L17.5,18.6z"/>
+	<path class="st0" d="M25.3,29.6c0-6.1,2.7-11,7.1-14.5l1.8,1.5c-4.2,3.6-6.1,7.7-6.1,13s1.9,9.4,6.1,13l-1.8,1.5
+		C28,40.6,25.3,35.7,25.3,29.6z"/>
+	<path class="st0" d="M41.9,42.6c4.2-3.6,6.1-7.7,6.1-13s-1.9-9.4-6.1-13l1.8-1.5c4.4,3.5,7.1,8.4,7.1,14.5s-2.7,11-7.1,14.5
+		L41.9,42.6z"/>
+</g>
 </svg>
