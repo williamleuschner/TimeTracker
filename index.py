@@ -1,10 +1,12 @@
 import datetime
 import json
 import csv
+import os
 from flask import Flask, render_template, url_for, redirect
 
 app = Flask(__name__)
 app.config.update(dict(Tracker=None))
+
 
 class TimeTracker(object):
     def __init__(self, subjects, timer_file, logger_file):
@@ -17,7 +19,7 @@ class TimeTracker(object):
         return "TimeTracker: timer_file: %s, logger_file: %s, subjects: %s" % (
             self.timer_file,
             self.logger_file,
-            ", ".join([s.name for s in subjects])
+            ", ".join([s.name for s in self.subjects])
         )
 
     def start_timer(self):
@@ -36,8 +38,9 @@ class TimeTracker(object):
                 self.start_time.isoformat(),
                 datetime.datetime.now().isoformat()
             ]
-            csvwriter = csv.writer(self.timer_file)
-            csvwriter.writerow(times)
+            with open(self.timer_file, "a") as tfile:
+                csvwriter = csv.writer(tfile)
+                csvwriter.writerow(times)
             return redirect(url_for("index"))
         else:
             if os.path.exists("/tmp/timetracker.tmp"):
@@ -53,6 +56,7 @@ def index():
         "index.html",
         subjects=subjects
     )
+
 
 @app.route("/start-timer", methods=["POST"])
 def start_timer():
@@ -70,12 +74,12 @@ def log_subject():
 
 
 def main():
-    rawcfg = open("timetracker.json","r")
+    rawcfg = open("timetracker.json", "r")
     cfg = json.load(rawcfg)
     app.config.Tracker = TimeTracker(
         cfg['subjects'],
-        open(cfg['timer-file'], "a"),
-        open(cfg['logger-file'], "a")
+        cfg['timer-file'],
+        cfg['logger-file']
     )
 
 main()
