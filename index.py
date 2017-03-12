@@ -48,6 +48,20 @@ class TimeTracker(object):
             else:
                 return "You haven't started the timer yet."
 
+    def log_subject(self, subject, minutes_worked):
+        if self.start_time is None:
+            return "You haven't started the timer yet."
+        else:
+            log_entry = [
+                minutes_worked,
+                datetime.datetime.now().isoformat(),
+                subject
+            ]
+            with open(self.logger_file, "a") as lfile:
+                csvwriter = csv.writer(lfile)
+                csvwriter.writerow(log_entry)
+            return redirect(url_for("index"))
+
 
 @app.route("/")
 def index():
