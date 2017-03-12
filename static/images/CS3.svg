@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+	<!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/">
+	<!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/">
+	<!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/">
+	<!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/">
+	<!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/">
+]>
+<svg version="1.1" id="Layer_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="54px" height="54px"
+	 viewBox="0 0 54 54" style="enable-background:new 0 0 54 54;" xml:space="preserve">
+<style type="text/css">
+<![CDATA[
+	.st0{fill:#FFFFFF;}
+	.st1{fill:none;stroke:#FFFFFF;stroke-width:4;stroke-miterlimit:10;}
+]]>
+</style>
+<metadata>
+	<sfw  xmlns="&ns_sfw;">
+		<slices></slices>
+		<sliceSourceBounds  width="54" height="54" bottomLeftOrigin="true" x="0" y="-54"></sliceSourceBounds>
+	</sfw>
+</metadata>
+<path class="st1" d="M48,42.45c0,3.065-2.484,5.55-5.55,5.55h-30.9C8.485,48,6,45.516,6,42.45v-30.9C6,8.485,8.485,6,11.55,6h30.9
+	C45.516,6,48,8.485,48,11.55V42.45z"/>
+<path class="st0" d="M43,40c0,1.657-1.343,3-3,3H14c-1.657,0-3-1.343-3-3V14c0-1.657,1.343-3,3-3h26c1.657,0,3,1.343,3,3V40z"/>
+<rect x="11" y="27" class="st0" width="3" height="3"/>
+<rect x="11" y="27" class="st0" width="3" height="3"/>
+<rect x="11" y="27" class="st0" width="3" height="3"/>
+<rect x="11" y="27" class="st0" width="3" height="3"/>
+<g>
+	<rect x="50" y="38" class="st0" width="4" height="3"/>
+	<rect x="50" y="33" class="st0" width="4" height="3"/>
+	<rect x="50" y="28" class="st0" width="4" height="3"/>
+	<rect x="50" y="23" class="st0" width="4" height="3"/>
+	<rect x="50" y="18" class="st0" width="4" height="3"/>
+	<rect x="50" y="13" class="st0" width="4" height="3"/>
+</g>
+<g>
+	<rect y="38" class="st0" width="4" height="3"/>
+	<rect y="33" class="st0" width="4" height="3"/>
+	<rect y="28" class="st0" width="4" height="3"/>
+	<rect y="23" class="st0" width="4" height="3"/>
+	<rect y="18" class="st0" width="4" height="3"/>
+	<rect y="13" class="st0" width="4" height="3"/>
+</g>
+<g>
+	<rect x="13" class="st0" width="3" height="4"/>
+	<rect x="18" class="st0" width="3" height="4"/>
+	<rect x="23" class="st0" width="3" height="4"/>
+	<rect x="28" class="st0" width="3" height="4"/>
+	<rect x="33" class="st0" width="3" height="4"/>
+	<rect x="38" class="st0" width="3" height="4"/>
+</g>
+<g>
+	<rect x="13" y="50" class="st0" width="3" height="4"/>
+	<rect x="18" y="50" class="st0" width="3" height="4"/>
+	<rect x="23" y="50" class="st0" width="3" height="4"/>
+	<rect x="28" y="50" class="st0" width="3" height="4"/>
+	<rect x="33" y="50" class="st0" width="3" height="4"/>
+	<rect x="38" y="50" class="st0" width="3" height="4"/>
+</g>
+</svg>
