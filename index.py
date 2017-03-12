@@ -1,55 +1,51 @@
-import time
+import datetime
 import json
-from flask import Flask, render_template, url_for
+import csv
+from flask import Flask, render_template, url_for, redirect
 
 app = Flask(__name__)
+app.config.update(dict(Tracker=None))
+
+class TimeTracker(object):
+    def __init__(self, subjects, timer_file, logger_file):
+        self.subjects = subjects
+        self.timer_file = timer_file
+        self.logger_file = logger_file
+        self.start_time = None
+
+    def __str__(self):
+        return "TimeTracker: timer_file: %s, logger_file: %s, subjects: %s" % (
+            self.timer_file,
+            self.logger_file,
+            ", ".join([s.name for s in subjects])
+        )
+
+    def start_timer(self):
+        if self.start_time is None:
+            self.start_time = datetime.datetime.now()
+            # Write the time to a temp file as a backup
+            with open("/tmp/timetracker.tmp", "w") as tmpfile:
+                tmpfile.write(self.start_time)
+            return redirect(url_for("index"))
+        else:
+            return "You've already started the timer."
+
+    def stop_timer(self):
+        if self.start_time is not None:
+            times = [self.start_time, datetime.datetime.now()]
+            csvwriter = csv.writer(self.timer_file)
+            csvwriter.writerow(times)
+            return redirect(url_for("index"))
+        else:
+            if os.path.exists("/tmp/timetracker.tmp"):
+                pass
+            else:
+                return "You haven't started the timer yet."
+
 
 @app.route("/")
 def index():
-    subjects = [
-        {
-            'name': 'Introduction to Computer Science Theory',
-            'shortname': 'CS Theory',
-            'link': '#',
-            'color': 'blue',
-            'icon': 'CS1.svg'
-        },
-        {
-            'name': 'The Mechanics of Programming',
-            'shortname': 'MoPs',
-            'link': '#',
-            'color': 'blue',
-            'icon': 'CS2.svg'
-        },
-        {
-            'name': 'Modern Philosophy',
-            'shortname': 'Philosophy',
-            'link': '#',
-            'color': 'green',
-            'icon': 'Philosophy.svg'
-        },
-        {
-            'name': 'Probability and Statistics I',
-            'shortname': 'Prob & Stat',
-            'link': '#',
-            'color': 'green',
-            'icon': 'Math.svg'
-        },
-        {
-            'name': 'University Physics II',
-            'shortname': 'UP II',
-            'link': '#',
-            'color': 'red',
-            'icon': 'Physics.svg'
-        },
-        {
-            'name': 'Functional Yoga',
-            'shortname': 'Yoga',
-            'link': '#',
-            'color': 'purple',
-            'icon': 'Yoga.svg'
-        }
-    ]
+    subjects = app.config.Tracker.subjects
     return render_template(
         "index.html",
         subjects=subjects
@@ -68,3 +64,15 @@ def stop_timer():
 @app.route("/log-subject", methods=["POST"])
 def log_subject():
     return "This will do something eventually"
+
+
+def main():
+    rawcfg = open("timetracker.json","r")
+    cfg = json.load(rawcfg)
+    app.config.Tracker = TimeTracker(
+        cfg['subjects'],
+        cfg['timer_file'],
+        cfg['logger-file']
+    )
+
+main()
