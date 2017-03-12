@@ -33,7 +33,7 @@
             <div class="flex-group">
                 {% for subject in subjects %}
                 <form class="button-container" action="{{ url_for('log_subject') }}"
-                    method="GET">
+                    method="POST">
                 <button class="button {{ subject.color }}">
                     <img src="{{ url_for('static', filename='images/' +
                     subject.icon) }}" alt="subject icon">
