@@ -63,9 +63,14 @@ a {
 }
 
 .button img {
-    width: 50px;
-    height: 50px;
-    margin: 5px auto;
+    width: 54px;
+    height: 54px;
+    margin: 6px auto;
+}
+
+.timer .button img {
+    width: 45px;
+    height: 45px;
 }
 
 .button p {
