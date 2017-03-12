@@ -9,18 +9,21 @@
         <div class="timer container">
             <p>Work Timer</p>
             <a href="" class="start button">
-                {% include "../static/images/start.svg" %}
+                <img src="{{ url_for('static', filename='images/start.svg') }}"
+                alt="start triangle icon">
                 <p>Start</p>
             </a>
             <a href="" class="stop button">
-                {% include "../static/images/stop.svg" %}
+                <img src="{{ url_for('static', filename='images/stop.svg') }}"
+                alt="stop square icon">
                 <p>Stop</p>
             </a>
         </div>
         <div class="subject container">
             {% for subject in subjects %}
             <a href="{{ subject.link }}" class="button {{ subject.color }}">
-                {% include "../static/images/" + subject.icon %}
+                <img src="{{ url_for('static', filename='images/' + subject.icon
+                }}" alt="subject icon">
                 <p>{{ subject.shortname }}</p>
             </a>
             {% endfor %}
