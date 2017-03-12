@@ -37,6 +37,6 @@
                 "icon": "Yoga.svg"
             }
         ],
-        "timer_file": "/srv/http/etc/time/timer.csv",
-        "logger_file": "/srv/http/etc/time/log.csv"
+        "timer-file": "/srv/http/etc/time/timer.csv",
+        "logger-file": "/srv/http/etc/time/log.csv"
 }
