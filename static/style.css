@@ -19,6 +19,10 @@ a {
     margin-bottom: 1rem;
 }
 
+.container:first-child {
+    margin-top: 1.3rem;
+}
+
 .container > p {
     font-variant: caps;
     color: #95989A;
