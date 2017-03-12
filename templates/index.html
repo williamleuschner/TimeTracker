@@ -1,0 +1,29 @@
+<!DOCTYPE html5>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Time Tracker</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div class="timer container">
+            <p>Work Timer</p>
+            <a href="" class="start button">
+                {% include start.svg %}
+                <p>Start</p>
+            </a>
+            <a href="" class="stop button">
+                {% include stop.svg %}
+                <p>Stop</p>
+            </a>
+        </div>
+        <div class="subject container">
+            {% for subject in subjects %}
+            <a href="{{ subject.link }}" class="button {{ subject.color }}">
+                {% include subject.icon %}
+                <p>{{ subject.shortname }}</p>
+            </a>
+            {% endfor %}
+        </div>
+    </body>
+</html>
