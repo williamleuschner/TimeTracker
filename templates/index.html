@@ -23,7 +23,7 @@
             {% for subject in subjects %}
             <a href="{{ subject.link }}" class="button {{ subject.color }}">
                 <img src="{{ url_for('static', filename='images/' + subject.icon
-                }}" alt="subject icon">
+                ) }}" alt="subject icon">
                 <p>{{ subject.shortname }}</p>
             </a>
             {% endfor %}

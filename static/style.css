@@ -1,0 +1,28 @@
+body, html {
+    font-family: "San Francisco Text", "SF UI Text", "Helvetica Neue", Arial, sans-serif;
+}
+
+.container {
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #95989A;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #95989A;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: space-around;
+}
+
+.container p {
+    font-variant: small-caps;
+    color: #95989A;
+    margin: 1rem 1.5rem;
+}
+
+.button {
+    background-color: #34C144;
+    color: #FFF;
+}
