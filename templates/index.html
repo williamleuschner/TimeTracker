@@ -34,7 +34,8 @@
                     subject.icon) }}" alt="subject icon">
                     <p>{{ subject.shortname }}</p>
                 </a>
-                <input type="number" name="FIXME" value="40">
+                <input type="number" name="minutes-worked" value="40">
+                <input type="text" name="subject" value="{{ subject.name }}" hidden>
                 </div>
                 {% endfor %}
             </div>
