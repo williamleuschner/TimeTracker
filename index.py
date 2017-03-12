@@ -84,7 +84,10 @@ def stop_timer():
 
 @app.route("/log-subject", methods=["POST"])
 def log_subject():
-    return "This will do something eventually"
+    return app.config.Tracker.log_subject(
+        request.form["subject"],
+        request.form["minutes-worked"]
+    )
 
 
 def main():
