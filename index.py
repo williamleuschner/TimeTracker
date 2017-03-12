@@ -74,8 +74,8 @@ def main():
     cfg = json.load(rawcfg)
     app.config.Tracker = TimeTracker(
         cfg['subjects'],
-        cfg['timer-file'],
-        cfg['logger-file']
+        open(cfg['timer-file'], "a"),
+        open(cfg['logger-file'], "a")
     )
 
 main()
