@@ -1,5 +1,5 @@
 body, html {
-    font-family: "San Francisco Text", "SF UI Text", "Helvetica Neue", Arial, sans-serif;
+    font-family: system, "San Francisco Text", "SF UI Text", "Helvetica Neue", Arial, sans-serif;
 }
 
 a {
@@ -37,6 +37,10 @@ a {
     align-items: center;
 }
 
+.button-container {
+    max-width: 108px;
+}
+
 .button-container input {
     width: 100%;
     margin: 0;
@@ -46,22 +50,24 @@ a {
 }
 
 .button {
-    background-color: #34C144;
     color: #FFF;
     margin: 0.5rem;
     display: inline-block;
     border-radius: 8px;
     width: 92px;
     height: 92px;
+    text-align: center;
 }
 
 .button img {
     width: 50px;
     height: 50px;
+    margin: 5px auto;
 }
 
 .button p {
     color: #FFF;
+    margin: auto;
 }
 
 .button.green {
