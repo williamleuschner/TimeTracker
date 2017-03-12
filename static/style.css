@@ -12,12 +12,16 @@ body, html {
     padding: 1rem;
     margin-bottom: 1rem;
     display: flex;
+}
+
+.flex-group {
     justify-content: center;
     align-items: space-around;
 }
 
-.container p {
-    font-variant: small-caps;
+
+.container > p {
+    font-variant: caps;
     color: #95989A;
     margin: 1rem 1.5rem;
 }
@@ -25,4 +29,31 @@ body, html {
 .button {
     background-color: #34C144;
     color: #FFF;
+    margin: 0.5rem;
+}
+
+.button img {
+    width: 54px;
+    height: 54px;
+    margin: 4px auto;
+}
+
+.button p {
+    color: #FFF;
+}
+
+.button.green {
+    background-color: #34C144;
+}
+
+.button.blue {
+    background-color: #3475C1;
+}
+
+.button.red {
+    background-color: #C13434;
+}
+
+.button.purple {
+    background-color: #A634C1;
 }
