@@ -43,9 +43,22 @@ class TimeTracker(object):
                 csvwriter = csv.writer(tfile)
                 csvwriter.writerow(times)
             flash("Timer stopped")
+            self.start_time = None
         else:
             if os.path.exists("/tmp/timetracker.tmp"):
-                pass
+                times = [datetime.datetime.now().isoformat()]
+                with open("/tmp/timetracker.tmp", "r") as tmpfile:
+                    times.append(datetime.datetime.strptime(
+                        tmpfile.read(),
+                        "%Y-%m-%dT%H:%M:%S.%f"
+                    ))
+                    times.reverse()
+                with open(self.timer_file, "a") as tfile:
+                    csvwriter = csv.writer(tfile)
+                    csvwriter.writerow(times)
+                flash("Timer stopped")
+                self.start_time = None
+                os.remove("/tmp/timetracker.tmp")
             else:
                 flash("You haven't started the timer yet.")
         return redirect(url_for("index"))
