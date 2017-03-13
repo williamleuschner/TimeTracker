@@ -62,7 +62,7 @@ class TimeTracker(object):
             with open(self.logger_file, "a") as lfile:
                 csvwriter = csv.writer(lfile)
                 csvwriter.writerow(log_entry)
-            flash("%i minutes of %s logged" % (minutes_worked, subject))
+            flash("%s minutes of %s logged" % (minutes_worked, subject))
         return redirect(url_for("index"))
 
 
