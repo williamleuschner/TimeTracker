@@ -89,14 +89,30 @@ a {
     background-color: #34C144;
 }
 
+.button.green:active {
+    background-color: #248730;
+}
+
 .button.blue {
     background-color: #3475C1;
+}
+
+.button.blue:active {
+    background-color: #245085;
 }
 
 .button.red {
     background-color: #C13434;
 }
 
+.button.red:active {
+    background-color: #872424;
+}
+
 .button.purple {
     background-color: #A634C1;
+}
+
+.button.purple:active {
+    background-color: #76258A;
 }
