@@ -24,7 +24,6 @@ a {
 }
 
 .container > p {
-    font-variant: caps;
     color: #95989A;
     margin: 1rem 1.5rem;
 }
@@ -119,16 +118,21 @@ a {
 
 .flash {
     font-size: 12px;
-    color: #333;
+    color: #95989A;
     border-top-width: 1px;
     border-top-style: solid;
     border-top-color: #95989A;
     border-bottom-width: 1px;
     border-bottom-style: solid;
     border-bottom-color: #95989A;
+    animation: shrinkout 1s ease-in 10s 1;
 }
 
 .flash span {
     margin-left: 1rem;
 }
 
+@keyframes shrinkout {
+    from {height: auto;}
+    to {height: 0px;}
+}

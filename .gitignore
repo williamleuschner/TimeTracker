@@ -2,3 +2,4 @@ timetracker.json
 *.pyc
 Philosophy-4.ai
 static/htmledit
+secret.key
