@@ -28,9 +28,10 @@ class TimeTracker(object):
             # Write the time to a temp file as a backup
             with open("/tmp/timetracker.tmp", "w") as tmpfile:
                 tmpfile.write(self.start_time.isoformat())
-            return redirect(url_for("index"))
+            flash("Timer started")
         else:
             flash("You've already started the timer.")
+        return redirect(url_for("index"))
 
     def stop_timer(self):
         if self.start_time is not None:
@@ -41,12 +42,13 @@ class TimeTracker(object):
             with open(self.timer_file, "a") as tfile:
                 csvwriter = csv.writer(tfile)
                 csvwriter.writerow(times)
-            return redirect(url_for("index"))
+            flash("Timer stopped")
         else:
             if os.path.exists("/tmp/timetracker.tmp"):
                 pass
             else:
                 flash("You haven't started the timer yet.")
+        return redirect(url_for("index"))
 
     def log_subject(self, subject, minutes_worked):
         if self.start_time is None:
@@ -60,7 +62,8 @@ class TimeTracker(object):
             with open(self.logger_file, "a") as lfile:
                 csvwriter = csv.writer(lfile)
                 csvwriter.writerow(log_entry)
-            return redirect(url_for("index"))
+            flash("%i minutes of %s logged" % (minutes_worked, subject))
+        return redirect(url_for("index"))
 
 
 @app.route("/")
@@ -74,22 +77,16 @@ def index():
 
 @app.route("/start-timer", methods=["POST"])
 def start_timer():
-    flash("Timer started")
     return app.config.Tracker.start_timer()
 
 
 @app.route("/stop-timer", methods=["POST"])
 def stop_timer():
-    flash("Timer stopped")
     return app.config.Tracker.stop_timer()
 
 
 @app.route("/log-subject", methods=["POST"])
 def log_subject():
-    flash("%i minutes of %s logged" % (
-        request.form["minutes-worked"],
-        request.form["subject"])
-    )
     return app.config.Tracker.log_subject(
         request.form["subject"],
         request.form["minutes-worked"]
