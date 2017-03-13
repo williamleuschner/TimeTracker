@@ -125,14 +125,16 @@ a {
     border-bottom-width: 1px;
     border-bottom-style: solid;
     border-bottom-color: #95989A;
-    animation: shrinkout 1s ease-in 10s 1;
+    overflow: hidden;
+    animation: shrinkout 1s ease-in 10s 1 forward;
 }
 
 .flash span {
-    margin-left: 1rem;
+    width: 100%;
+    text-align: center;
 }
 
 @keyframes shrinkout {
-    from {height: auto;}
-    to {height: 0px;}
+    from {height: auto; visibility: visible;}
+    to {height: 0px; visibility: hidden;}
 }
