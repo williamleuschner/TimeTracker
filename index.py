@@ -104,5 +104,7 @@ def main():
         cfg['timer-file'],
         cfg['logger-file']
     )
+    with open("secret.key", "r") as sk:
+        app.secret_key = sk.read()
 
 main()
