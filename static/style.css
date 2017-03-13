@@ -126,7 +126,8 @@ a {
     border-bottom-style: solid;
     border-bottom-color: #95989A;
     overflow: hidden;
-    animation: shrinkout 1s ease-in 10s 1 forward;
+    animation: shrinkout 1s ease-in 10s normal 1 forward;
+    transition: visibility 0 linear 11s normal 1 forward;
 }
 
 .flash span {
@@ -135,6 +136,6 @@ a {
 }
 
 @keyframes shrinkout {
-    from {height: auto; visibility: visible;}
-    to {height: 0px; visibility: hidden;}
+    from {height: auto;}
+    to {height: 0px;}
 }
