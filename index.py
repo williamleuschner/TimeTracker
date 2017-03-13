@@ -2,7 +2,7 @@ import datetime
 import json
 import csv
 import os
-from flask import Flask, render_template, url_for, redirect, request
+from flask import Flask, render_template, url_for, redirect, request, flash
 
 app = Flask(__name__)
 app.config.update(dict(Tracker=None))
@@ -30,7 +30,7 @@ class TimeTracker(object):
                 tmpfile.write(self.start_time.isoformat())
             return redirect(url_for("index"))
         else:
-            return "You've already started the timer."
+            flash("You've already started the timer.")
 
     def stop_timer(self):
         if self.start_time is not None:
@@ -46,11 +46,11 @@ class TimeTracker(object):
             if os.path.exists("/tmp/timetracker.tmp"):
                 pass
             else:
-                return "You haven't started the timer yet."
+                flash("You haven't started the timer yet.")
 
     def log_subject(self, subject, minutes_worked):
         if self.start_time is None:
-            return "You haven't started the timer yet."
+            flash("You haven't started the timer yet.")
         else:
             log_entry = [
                 minutes_worked,
@@ -74,16 +74,22 @@ def index():
 
 @app.route("/start-timer", methods=["POST"])
 def start_timer():
+    flash("Timer started")
     return app.config.Tracker.start_timer()
 
 
 @app.route("/stop-timer", methods=["POST"])
 def stop_timer():
+    flash("Timer stopped")
     return app.config.Tracker.stop_timer()
 
 
 @app.route("/log-subject", methods=["POST"])
 def log_subject():
+    flash("%i minutes of %s logged" % (
+        request.form["minutes-worked"],
+        request.form["subject"])
+    )
     return app.config.Tracker.log_subject(
         request.form["subject"],
         request.form["minutes-worked"]

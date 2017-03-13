@@ -116,3 +116,19 @@ a {
 .button.purple:active {
     background-color: #76258A;
 }
+
+.flash {
+    font-size: 12px;
+    color: #333;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #95989A;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #95989A;
+}
+
+.flash span {
+    margin-left: 1rem;
+}
+
