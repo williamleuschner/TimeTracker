@@ -8,6 +8,11 @@ app = Flask(__name__)
 app.config.update(dict(Tracker=None))
 
 
+class Response(object):
+    def __init__(self, success, message):
+        self.success = success
+        self.message = message
+
 class TimeTracker(object):
     def __init__(self, subjects, timer_file, logger_file):
         self.subjects = subjects
@@ -23,17 +28,19 @@ class TimeTracker(object):
         )
 
     def start_timer(self):
+        resp = None
         if self.start_time is None:
             self.start_time = datetime.datetime.now()
             # Write the time to a temp file as a backup
             with open("/tmp/timetracker.tmp", "w") as tmpfile:
                 tmpfile.write(self.start_time.isoformat())
-            flash("Timer started")
+            resp = Response(True, "Timer started")
         else:
-            flash("You've already started the timer.")
-        return redirect(url_for("index"))
+            resp = Response(False, "You've already started the timer")
+        return resp
 
     def stop_timer(self):
+        resp = None
         if self.start_time is not None:
             times = [
                 self.start_time.isoformat(),
@@ -42,8 +49,8 @@ class TimeTracker(object):
             with open(self.timer_file, "a") as tfile:
                 csvwriter = csv.writer(tfile)
                 csvwriter.writerow(times)
-            flash("Timer stopped")
             self.start_time = None
+            resp = Response(True, "Timer stopped")
         else:
             if os.path.exists("/tmp/timetracker.tmp"):
                 times = [datetime.datetime.now().isoformat()]
@@ -56,16 +63,17 @@ class TimeTracker(object):
                 with open(self.timer_file, "a") as tfile:
                     csvwriter = csv.writer(tfile)
                     csvwriter.writerow(times)
-                flash("Timer stopped")
                 self.start_time = None
                 os.remove("/tmp/timetracker.tmp")
+                resp = Response(True, "Timer stopped")
             else:
-                flash("You haven't started the timer yet.")
-        return redirect(url_for("index"))
+                resp = Response(False, "You haven't started the timer yet.")
+        return resp
 
     def log_subject(self, subject, minutes_worked):
+        resp = None
         if self.start_time is None:
-            flash("You haven't started the timer yet.")
+            resp = Response(False, "You haven't started the timer yet.")
         else:
             log_entry = [
                 minutes_worked,
@@ -75,8 +83,11 @@ class TimeTracker(object):
             with open(self.logger_file, "a") as lfile:
                 csvwriter = csv.writer(lfile)
                 csvwriter.writerow(log_entry)
-            flash("%s minutes of %s logged" % (minutes_worked, subject))
-        return redirect(url_for("index"))
+            resp = Response(
+                True,
+                "%s minutes of %s logged" % (minutes_worked, subject)
+            )
+        return resp
 
 
 @app.route("/")
@@ -90,20 +101,26 @@ def index():
 
 @app.route("/start-timer", methods=["POST"])
 def start_timer():
-    return app.config.Tracker.start_timer()
+    resp = app.config.Tracker.start_timer()
+    flash(resp.message)
+    return redirect(url_for("index"))
 
 
 @app.route("/stop-timer", methods=["POST"])
 def stop_timer():
-    return app.config.Tracker.stop_timer()
+    resp = app.config.Tracker.stop_timer()
+    flash(resp.message)
+    return redirect(url_for("index"))
 
 
 @app.route("/log-subject", methods=["POST"])
 def log_subject():
-    return app.config.Tracker.log_subject(
+    resp =  app.config.Tracker.log_subject(
         request.form["subject"],
         request.form["minutes-worked"]
     )
+    flash(resp.message)
+    return redirect(url_for("index"))
 
 
 def main():
