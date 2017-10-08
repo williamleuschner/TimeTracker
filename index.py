@@ -2,16 +2,21 @@ import datetime
 import json
 import csv
 import os
-from flask import Flask, render_template, url_for, redirect, request, flash
+from flask import Flask, render_template, url_for, redirect, request, flash,
+Response
 
 app = Flask(__name__)
 app.config.update(dict(Tracker=None))
 
 
-class Response(object):
+class TimeTrackerMessage(object):
     def __init__(self, success, message):
         self.success = success
         self.message = message
+
+    def as_json(self):
+        resp = {'success':self.success, 'message': self.message}
+        return json.dumps(resp)
 
 
 class TimeTracker(object):
@@ -35,9 +40,9 @@ class TimeTracker(object):
             # Write the time to a temp file as a backup
             with open("/tmp/timetracker.tmp", "w") as tmpfile:
                 tmpfile.write(self.start_time.isoformat())
-            resp = Response(True, "Timer started")
+            resp = TimeTrackerData(True, "Timer started")
         else:
-            resp = Response(False, "You've already started the timer")
+            resp = TimeTrackerData(False, "You've already started the timer")
         return resp
 
     def stop_timer(self):
@@ -51,7 +56,7 @@ class TimeTracker(object):
                 csvwriter = csv.writer(tfile)
                 csvwriter.writerow(times)
             self.start_time = None
-            resp = Response(True, "Timer stopped")
+            resp = TimeTrackerData(True, "Timer stopped")
         else:
             if os.path.exists("/tmp/timetracker.tmp"):
                 times = [datetime.datetime.now().isoformat()]
@@ -66,15 +71,15 @@ class TimeTracker(object):
                     csvwriter.writerow(times)
                 self.start_time = None
                 os.remove("/tmp/timetracker.tmp")
-                resp = Response(True, "Timer stopped")
+                resp = TimeTrackerData(True, "Timer stopped")
             else:
-                resp = Response(False, "You haven't started the timer yet.")
+                resp = TimeTrackerData(False, "You haven't started the timer yet.")
         return resp
 
     def log_subject(self, subject, minutes_worked):
         resp = None
         if self.start_time is None:
-            resp = Response(False, "You haven't started the timer yet.")
+            resp = TimeTrackerData(False, "You haven't started the timer yet.")
         else:
             log_entry = [
                 minutes_worked,
@@ -84,7 +89,7 @@ class TimeTracker(object):
             with open(self.logger_file, "a") as lfile:
                 csvwriter = csv.writer(lfile)
                 csvwriter.writerow(log_entry)
-            resp = Response(
+            resp = TimeTrackerData(
                 True,
                 "%s minutes of %s logged" % (minutes_worked, subject)
             )
@@ -131,28 +136,33 @@ def api_info():
 
 @app.route("/api/subjects")
 def api_subjects():
-    return str(app.config.Tracker.subjects)
+    data = app.config.Tracker.subjects
+    resp = Response(str(data), mimetype='text/json')
+    return resp
 
 
 @app.route("/api/start-timer", methods=["POST"])
 def api_start_timer():
-    resp = app.config.Tracker.start_timer()
-    return str({'success': resp.success, 'message': resp.message})
+    data = app.config.Tracker.start_timer()
+    resp = Response(data.as_json(), mimetype='text/json')
+    return resp
 
 
 @app.route("/api/stop-timer", methods=["POST"])
 def api_stop_timer():
-    resp = app.config.Tracker.stop_timer()
-    return str({'success': resp.success, 'message': resp.message})
+    data = app.config.Tracker.stop_timer()
+    resp = Response(data.as_json(), mimetype='text/json')
+    return resp
 
 
 @app.route("/api/log-subject", methods=["POST"])
 def api_log_subject():
-    resp =  app.config.Tracker.log_subject(
+    data =  app.config.Tracker.log_subject(
         request.form["subject"],
         request.form["minutes-worked"]
     )
-    return str({'success': resp.success, 'message': resp.mesesage})
+    resp = Response(data.as_json(), mimetype='text/json')
+    return resp
 
 
 def main():
