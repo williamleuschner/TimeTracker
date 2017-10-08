@@ -1,0 +1,20 @@
+body, html {
+    font-family: -apple-system, "San Francisco Text", "SF UI Text", BlinkMacSystemFont, Roboto, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 1rem auto;
+    max-width: 30rem;
+}
+
+pre {
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #BBB;
+    overflow-x: scroll;
+    position: relative;
+    left: -3rem;
+    width: 32rem;
+}

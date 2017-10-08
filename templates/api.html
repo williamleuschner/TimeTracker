@@ -15,14 +15,12 @@
         <li><code>GET /api/subjects</code> — Return a JSON object containing all information known
         about the subjects that can be logged.
         <pre><code>
-        [
-        {
-            &quot;name&quot;: string,         // Full course name
-            &quot;shortname&quot;: string,    // Abbreviated course name
-            &quot;color&quot;: string,        // One of green, blue, red, or purple
-            &quot;icon&quot;: string          // Name of the icon file for the button
-        }
-        ]
+        [ {
+            &quot;name&quot;: string,      // Full course name
+            &quot;shortname&quot;: string, // Abbreviated course name
+            &quot;color&quot;: string,     // One of green, blue, red, or purple
+            &quot;icon&quot;: string       // Name of the icon file for the button
+        } ]
         </code></pre></li>
         <li><code>POST /api/start-timer</code> — Start the work timer. Return a JSON object
         indicating status:
