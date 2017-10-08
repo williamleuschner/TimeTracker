@@ -2,8 +2,8 @@ import datetime
 import json
 import csv
 import os
-from flask import Flask, render_template, url_for, redirect, request, flash,
-Response
+from flask import Flask, render_template, url_for, redirect, request, flash
+from flask import Response
 
 app = Flask(__name__)
 app.config.update(dict(Tracker=None))
