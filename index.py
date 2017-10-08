@@ -137,21 +137,21 @@ def api_info():
 @app.route("/api/subjects")
 def api_subjects():
     data = app.config.Tracker.subjects
-    resp = Response(str(data), mimetype='text/json')
+    resp = Response(str(data), mimetype='application/json')
     return resp
 
 
 @app.route("/api/start-timer", methods=["POST"])
 def api_start_timer():
     data = app.config.Tracker.start_timer()
-    resp = Response(data.as_json(), mimetype='text/json')
+    resp = Response(data.as_json(), mimetype='application/json')
     return resp
 
 
 @app.route("/api/stop-timer", methods=["POST"])
 def api_stop_timer():
     data = app.config.Tracker.stop_timer()
-    resp = Response(data.as_json(), mimetype='text/json')
+    resp = Response(data.as_json(), mimetype='application/json')
     return resp
 
 
@@ -161,7 +161,7 @@ def api_log_subject():
         request.form["subject"],
         request.form["minutes-worked"]
     )
-    resp = Response(data.as_json(), mimetype='text/json')
+    resp = Response(data.as_json(), mimetype='application/json')
     return resp
 
 
