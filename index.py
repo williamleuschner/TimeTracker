@@ -40,9 +40,9 @@ class TimeTracker(object):
             # Write the time to a temp file as a backup
             with open("/tmp/timetracker.tmp", "w") as tmpfile:
                 tmpfile.write(self.start_time.isoformat())
-            resp = TimeTrackerData(True, "Timer started")
+            resp = TimeTrackerMessage(True, "Timer started")
         else:
-            resp = TimeTrackerData(False, "You've already started the timer")
+            resp = TimeTrackerMessage(False, "You've already started the timer")
         return resp
 
     def stop_timer(self):
@@ -56,7 +56,7 @@ class TimeTracker(object):
                 csvwriter = csv.writer(tfile)
                 csvwriter.writerow(times)
             self.start_time = None
-            resp = TimeTrackerData(True, "Timer stopped")
+            resp = TimeTrackerMessage(True, "Timer stopped")
         else:
             if os.path.exists("/tmp/timetracker.tmp"):
                 times = [datetime.datetime.now().isoformat()]
@@ -71,15 +71,15 @@ class TimeTracker(object):
                     csvwriter.writerow(times)
                 self.start_time = None
                 os.remove("/tmp/timetracker.tmp")
-                resp = TimeTrackerData(True, "Timer stopped")
+                resp = TimeTrackerMessage(True, "Timer stopped")
             else:
-                resp = TimeTrackerData(False, "You haven't started the timer yet.")
+                resp = TimeTrackerMessage(False, "You haven't started the timer yet.")
         return resp
 
     def log_subject(self, subject, minutes_worked):
         resp = None
         if self.start_time is None:
-            resp = TimeTrackerData(False, "You haven't started the timer yet.")
+            resp = TimeTrackerMessage(False, "You haven't started the timer yet.")
         else:
             log_entry = [
                 minutes_worked,
@@ -89,7 +89,7 @@ class TimeTracker(object):
             with open(self.logger_file, "a") as lfile:
                 csvwriter = csv.writer(lfile)
                 csvwriter.writerow(log_entry)
-            resp = TimeTrackerData(
+            resp = TimeTrackerMessage(
                 True,
                 "%s minutes of %s logged" % (minutes_worked, subject)
             )
