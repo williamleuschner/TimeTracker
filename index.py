@@ -137,7 +137,7 @@ def api_info():
 @app.route("/api/subjects")
 def api_subjects():
     subject_list = app.config.Tracker.subjects
-    data = {'subjects':subject_list}
+    data = {'subjects':subject_list, 'count':len(subject_list)}
     resp = Response(str(data), mimetype='application/json')
     return resp
 
