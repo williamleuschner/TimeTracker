@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>TimeTracker API</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='api.css') }}">
+    </head>
+    <body>
+        <h1>TimeTracker API</h1>
+
+        <p>In order to facilitate integrations with with whatever systems make time
+        tracking easiest for you, TimeTracker offers the following API endpoints:</p>
+
+        <ul>
+        <li><code>GET /api/subjects</code> — Return a JSON object containing all information known
+        about the subjects that can be logged.
+        <pre><code>
+        [
+        {
+            &quot;name&quot;: string,         // Full course name
+            &quot;shortname&quot;: string,    // Abbreviated course name
+            &quot;color&quot;: string,        // One of green, blue, red, or purple
+            &quot;icon&quot;: string          // Name of the icon file for the button
+        }
+        ]
+        </code></pre></li>
+        <li><code>POST /api/start-timer</code> — Start the work timer. Return a JSON object
+        indicating status:
+        <pre><code>
+        {
+        &quot;status&quot;: boolean, // Did the request succeed?
+        &quot;message&quot;: string  // Displayable message about success
+        }
+        </code></pre></li>
+        <li><code>POST /api/stop-timer</code> — Stop the work timer. Return a JSON object indicating
+        status:
+        <pre><code>
+        {
+        &quot;status&quot;: boolean, // Did the request succeed?
+        &quot;message&quot;: string  // Displayable message about success
+        }
+        </code></pre></li>
+        <li><code>POST /api/log-subject</code> — Log a specific amount of time spent working on a
+        subject. Takes two form-encoded arguments: <code>subject</code> and <code>minutes-worked</code>.
+        <code>subject</code> is the full name of the subject to log time for; <code>minutes-worked</code> is
+        how many minutes to log for that subject. Returns a JSON object indicating
+        status:
+        <pre><code>
+        {
+        &quot;status&quot;: boolean, // Did the request succeed?
+        &quot;message&quot;: string  // Displayable message about success
+        }
+        </code></pre></li>
+        </ul>
+    </body>
+</html>

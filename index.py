@@ -13,6 +13,7 @@ class Response(object):
         self.success = success
         self.message = message
 
+
 class TimeTracker(object):
     def __init__(self, subjects, timer_file, logger_file):
         self.subjects = subjects
@@ -121,6 +122,37 @@ def log_subject():
     )
     flash(resp.message)
     return redirect(url_for("index"))
+
+
+@app.route("/api")
+def api_info():
+    return render_template("api.html")
+
+
+@app.route("/api/subjects")
+def api_subjects():
+    return str(app.config.Tracker.subjects)
+
+
+@app.route("/api/start-timer", methods=["POST"])
+def api_start_timer():
+    resp = app.config.Tracker.start_timer()
+    return str({'success': resp.success, 'message': resp.message})
+
+
+@app.route("/api/stop-timer", methods=["POST"])
+def api_stop_timer():
+    resp = app.config.Tracker.stop_timer()
+    return str({'success': resp.success, 'message': resp.message})
+
+
+@app.route("/api/log-subject", methods=["POST"])
+def api_log_subject():
+    resp =  app.config.Tracker.log_subject(
+        request.form["subject"],
+        request.form["minutes-worked"]
+    )
+    return str({'success': resp.success, 'message': resp.mesesage})
 
 
 def main():
