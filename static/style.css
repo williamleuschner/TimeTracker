@@ -130,12 +130,12 @@ a {
 }
 
 .button.yellow {
-    color: #2D2D2D;
-    background-color: #FFDE00;
+    color: #FFF;
+    background-color: #FB1;
 }
 
 .button.yellow:active {
-    background-color: #FBDA00;
+    background-color: #F0B010;
 }
 
 
