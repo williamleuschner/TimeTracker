@@ -80,11 +80,12 @@ a {
 }
 
 .button p {
-    color: #FFF;
+    color: inherit;
     margin: auto;
 }
 
 .button.green {
+    color: #FFF;
     background-color: #34C144;
 }
 
@@ -93,6 +94,7 @@ a {
 }
 
 .button.blue {
+    color: #FFF;
     background-color: #3475C1;
 }
 
@@ -101,6 +103,7 @@ a {
 }
 
 .button.red {
+    color: #FFF;
     background-color: #C13434;
 }
 
@@ -109,6 +112,7 @@ a {
 }
 
 .button.purple {
+    color: #FFF;
     background-color: #A634C1;
 }
 
@@ -117,6 +121,7 @@ a {
 }
 
 .button.black {
+    color: #FFF;
     background-color: #2D2D2D;
 }
 
